@@ -1,0 +1,19 @@
+.button_yello {
+	display       : inline-block;
+    border  : 2px solid #8d6325;
+	border-radius : 10%;          /* 角丸       */
+	font-size     : 14pt;        /* 文字サイズ */
+	text-align    : center;      /* 文字位置   */
+	cursor        : pointer;     /* カーソル   */
+	padding       : 10px 10px;   /* 余白       */
+	background    : #ffdf51ad;    /* 背景色     */
+	color         : #8d6325;     /* 文字色     */
+	line-height   : 1em;         /* 1行の高さ  */
+	opacity       : 0.9;         /* 透明度     */
+	transition    : .3s;         /* なめらか変化 */
+	
+  }
+  .button_yello:hover {
+	box-shadow    : none;        /* カーソル時の影消去 */
+	opacity       : 1;           /* カーソル時透明度 */
+  }

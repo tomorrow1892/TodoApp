@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/blue2.css}">
+    <link rel="stylesheet" th:href="@{/css/button.css}">
+    <title>ToDoアプリ</title>
+</head>
+<body>
+    <form role="form" th:action="@{/__${mid}__/todos}" , method="get">
+        <p><input type="submit" value="自分のToDoを見る" class = "button_yello" /></p>
+    </form>
+    <h1>みんなのToDo一覧</h1>
+    
+    
+    <table >
+        <tr>
+            <th>ToDoタイトル</th>
+            <th>書いた人</th>
+            <th>作成日</th>
+        </tr>
+        <tr th:each="t: ${todos}">
+            <td>[[${t.title}]]</td>
+            <td>[[${t.mid}]]</td>
+            <td>[[${t.createdAt}]]</td>
+        </tr>
+    </table>
+
+    <h1>みんなのDone一覧</h1>
+
+    <table >
+        <tr>
+            <th>Doneタイトル</th>
+            <th>書いた人</th>
+            <th>完了日</th>
+        </tr>
+        <tr th:each="d: ${dones}">
+            <td>[[${d.title}]]</td>
+            <td>[[${d.mid}]]</td>
+            <td>[[${d.doneAt}]]</td>
+        </tr>
+    </table>
+
+
+</body>
+</html>
