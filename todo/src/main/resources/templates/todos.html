@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/blue2.css}">
+    <link rel="stylesheet" th:href="@{/css/button.css}">
+    <title>ToDoアプリ</title>
+</head>
+<body>
+    <form role="form" th:action="@{/__${mid}__/allToDos}" , method="get">
+        <p><input type="submit" value="皆のToDoを見る" class = "button_yello"></p>
+    </form>
+    <h1>[[${name}]]さんのToDo一覧</h1>
+    
+    <table >
+        <tr>
+            <th>ToDoタイトル</th>
+            <th>作成日</th>
+            <th></th>
+        </tr>
+        <tr th:each="t: ${todos}">
+            <td>[[${t.title}]]</td>
+            <td>[[${t.createdAt}]]</td>
+            <td><form role="form" th:action="@{/__${mid}__/__${t.seq}__/done}" method="post">
+                <p><input type="submit" value="完了"  class = "button"/></p>
+            </form></td>
+        </tr>
+    </table>
+
+
+    <form role="form" th:action="@{/__${mid}__/register}" th:object="${todoForm}" method="post">
+        <input type="text" required th:field="*{title}" />
+        <input type="submit" value="ToDo登録" class = "button"/>
+    </form>
+
+    <h1>[[${name}]]さんのDone一覧</h1>
+    <table >
+        <tr>
+            <th>Doneタイトル</th>
+            <th>完了日</th>
+            
+        </tr>
+        <tr th:each="d: ${dones}">
+            <td>[[${d.title}]]</td>
+            <td>[[${d.doneAt}]]</td>
+        </tr>
+    </table>
+
+
+</body>
+</html>
