@@ -12,9 +12,10 @@
     <h1>ToDo管理アプリ</h1>
 
     
-    <form role="form" th:action="@{/login}" th:object="${MidForm}" method="get">
-        <input type="text" required th:field="*{mid}" size = 50/>
+    <form role="form" th:action="@{/login}" th:object="${midForm}" method="get">
+        <input type="text"  th:field="*{mid}" size = 50/>
         <input type="submit" value="ログイン" class = "button_yello" />
+        <br><span th:if="${#fields.hasErrors('mid')}" th:errors="*{mid}" style="color: red"></span>
     </form>
     
    

@@ -49,7 +49,17 @@ public class ToDoService {
         return toDoRepository.findByDone(true);
     }
 
-    public ToDo toDone(Long seq){
+    public void deleteToDo(Long seq){
+        toDoRepository.deleteById(seq);
+    }
+
+    public ToDo updateToDo(String mid, Long seq,ToDoForm form){
+        ToDo todo = getToDo(seq);
+        todo.setTitle(form.getTitle());
+        toDoRepository.save(todo);
+        return todo;
+    }
+    public ToDo done(String mid,Long seq){
         ToDo todo = toDoRepository.findById(seq).get();
         todo.setDone(true);
         todo.setDoneAt(new Date());
